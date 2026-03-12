@@ -47,11 +47,9 @@ public class Snack implements Serializable {
 
     @Override
     public String toString() {
-        return "Snack{" +
-                "idSnack=" + idSnack +
-                ", nombre='" + nombre + '\'' +
-                ", precio=" + precio +
-                '}';
+        return "ID: " + idSnack +
+                ", Nombre: '" + nombre + '\'' +
+                ", Precio: $" + precio;
     }
 
     //generamos metodo equals y hashCode
