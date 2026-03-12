@@ -49,10 +49,15 @@ public class MaquinaSnacks {
         switch (opcion){
             case 1 -> comprarSnack(consola, productos);
             case 2 -> mostrarTicket(productos);
+            case 3 -> agregarSnack(consola);
+            case 4 -> {
+                System.out.println("Regresa pronto!");
+                salir = true;
+            }
+            default -> System.out.println("Opcion invalida: " + opcion);
         }
         return salir;
     }
-
 
     private static void comprarSnack(Scanner consola, List<Snack> productos){
         System.out.print("Que snack quieres comprar (id)?: ");
@@ -80,7 +85,7 @@ public class MaquinaSnacks {
         var ticket = "*** Ticket de Venta ***";
         var total = 0.00;
         for (var producto : productos){
-            ticket += "\n\t-" + producto.getNombre() + " - $" + producto.getPrecio();
+            ticket += "\n\t* " + producto.getNombre() + " - $" + producto.getPrecio();
             total += producto.getPrecio();
         }
         ticket += "\n\tTotal: $" + total;
@@ -88,4 +93,16 @@ public class MaquinaSnacks {
     }
 
 
+    private static void agregarSnack(Scanner consola){
+        System.out.print("Ingrese nombre del snack: ");
+        var nombreSnack = consola.nextLine();
+        System.out.print("Ingrese precio del snack ");
+        var precioSnack = Double.parseDouble(consola.nextLine());
+        //Snacks al ser un objeto estatico no tenemos la necesidad de instanciarlo (crearlo),
+        //simplemente llamamos el metodo agregarSnack
+        Snacks.agregarSnack(new Snack(nombreSnack,precioSnack));
+        System.out.println("Tu snack se ah agregado correctamente");
+        //mostramos la lista de snacks
+        Snacks.mostrarSnacks();
+    }
 }
