@@ -22,7 +22,7 @@ public class Snacks {
     public static void mostrarSnacks(){
         var inventarioSnacks = "";
         //Recorremos la lista
-        for(var snack: snacks){
+        for(Snack snack: snacks){
             //concatenamos cada uno de los objetos de tipo snack
             inventarioSnacks += snack.toString() + "\n";
         }
